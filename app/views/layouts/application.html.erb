@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>AnalyzeMe</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body data-controller-name="<%= controller_name%>" data-action-name="<%= action_name %>">
+		<% unless controller_name == 'sessions' %>
+			<%= render "layouts/nav_bar" %>
+		<% end %>
+		
+		<div class="container">
+			<div class="row">
+		    	<div class="col-xs-12">
+		    		<%= yield %>
+		    	</div>
+		  	</div>
+		</div>
+	</body>
+</html>

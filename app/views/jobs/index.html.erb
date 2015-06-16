@@ -1,0 +1,53 @@
+
+<table class="table table-striped">
+	<thead>
+		<th class="col-md-2">Job</th>
+		<th class="col-md-2">Sentiment</th>
+		<th class="col-md-2"> Heat Map</th>
+		<th class="col-md-2"> Another Chart</th>
+		<th class="col-md-4"> </th>
+		
+	</thead>
+	<tbody>
+		<% @jobs.each do |job| %>
+			<tr>
+				<td><%=job["title"]%></td>
+				<td data-toggle="modal" data-target="#modal" class="clickable" 
+				    data-modal-type="chart"  data-chart-type="sentiment" data-sentitag-string="<%= job["sentitag"]%>"
+				    data-job-title="<%= job["title"]%>"> 
+						
+						<%= bar_chart sentitag_chart_json_path(sentitag_string: job["sentitag"]) , 
+					    colors: ["#18bc9c", "#e74c3c", "#74898a"], height: "75px",  library: {legend: "none"} %>
+				</td>
+				<td></td>
+			</tr>
+		<% end %>
+	</tbody>
+	<tfoot>
+	</tfoot>
+</table>
+
+
+<!-- Empty modal to dynamically load  chart data  -->
+<div class="modal fade bs-example-modal-lg" id="modal"  tabindex="-1" role="dialog" 
+	aria-labelledby="myModalLabel" aria-hidden="true">
+ 
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        	<span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="modal-title">
+        	
+        </h4>
+      </div>
+      <div class="modal-body" id="modal-body" >
+      			
+      </div>
+      <div class="modal-footer">
+       
+      </div>
+    </div>
+  </div>
+</div>

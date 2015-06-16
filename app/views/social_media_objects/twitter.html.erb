@@ -1,0 +1,25 @@
+
+<h3><%= fa_icon "twitter"  %> Twitter</h3>
+
+
+<table class="table table-striped">
+	<thead>
+		<th class="col-md-2">Twitter Handle</th>
+		<th class="col-md-6">Tweet</th>
+		<th class="col-md-2">#</th>
+		<th class="col-md-2">Time</th>
+	</thead>
+	<tbody>
+		<% @tweets.each do |tweet| %>
+			<tr>
+				<td><%=tweet["authorname"]%></td>
+				<td><%=tweet["body"]%></td>
+				<td><%=tweet["tags"]%></td>
+				<td><%=tweet_timestamp_formatter(tweet["date"])%></td>
+			</tr>
+		<%end%>
+	</tbody>
+	<tfoot>
+	</tfoot>
+</table>
+
